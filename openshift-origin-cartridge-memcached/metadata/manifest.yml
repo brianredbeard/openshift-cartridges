@@ -1,0 +1,44 @@
+Name: memcached
+Namespace: MEMCACHED
+Cartridge-Short-Name: MEMCACHED
+Architecture: noarch
+Display-Name: Memcached Distributed Memory Object Caching System
+Description: "Memcached is an in-memory key-value store for small chunks of arbitrary data (strings, objects) from results of database calls, API calls, or page rendering."
+Version: '1.4'
+Versions: [1.4]
+Cartridge-Version: 0.2.0
+Cartridge-Vendor: redhat
+License: ASL 2.0
+Vendor: Memcached
+Categories:
+  - service
+  - cache
+  - embedded
+Website: http://www.memcached.org
+Help-Topics:
+  - "Building with Memcached" : https://www.openshift.com/developers/memcached
+Cart-Data:
+  - Key: "port"
+    Type: cart_data
+    Description: "Memcached port"
+  - Key: connection_url
+    Type: cart_data
+    Description: "Memcached connection URL"
+Suggests:
+Provides:
+  - memcached-1.4
+  - "memcached"
+  - "memcached(version) = 1.4"
+  - memcached-basic-mode
+Publishes:
+  publish-nosql-db-connection-info:
+    Type: "ENV:NET_TCP:nosqldb:connection-info"
+Scaling:
+  Min: 1
+  Max: 1
+Endpoints:
+  - Private-IP-Name:   DB_HOST
+    Private-Port-Name: DB_PORT
+    Private-Port:      11211
+    Public-Port-Name:  DB_PROXY_PORT
+Install-Build-Required: false
